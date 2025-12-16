@@ -1,0 +1,81 @@
+{{ define "main" }}
+<div class="home-container">
+  <!-- Mini About Section -->
+  {{ if site.Params.avatar.url }}
+  <section class="mini-about">
+    <div class="about-content">
+      {{ if site.Params.avatar.url }}
+      <img src="{{ site.Params.avatar.url }}" alt="{{ site.Title }}" class="about-avatar">
+      {{ end }}
+      
+      <div class="about-info">
+        <h1 class="about-name">{{ site.Title }}</h1>
+        {{ if site.Params.description }}
+        <p class="about-description">{{ site.Params.description }}</p>
+        {{ end }}
+        
+        {{ if site.Params.social }}
+        <div class="about-social">
+          {{ partial "social-links.html" . }}
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+  {{ end }}
+
+  <!-- Posts List -->
+  <section class="posts-section">
+    <h2 class="posts-title">Recent Posts</h2>
+    
+    <div class="posts-list">
+      {{ range where site.RegularPages "Type" "posts" | first 10 }}
+      <article class="post-card">
+        {{ if .Params.image }}
+        <div class="post-image">
+          <a href="{{ .RelPermalink }}">
+            <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}" loading="lazy">
+          </a>
+        </div>
+        {{ end }}
+        
+        <div class="post-content">
+          <h3 class="post-title">
+            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+          </h3>
+          
+          {{ if .Description }}
+          <p class="post-description">{{ .Description }}</p>
+          {{ else if .Summary }}
+          <p class="post-description">{{ .Summary | truncate 150 }}</p>
+          {{ end }}
+          
+          <div class="post-meta-inline">
+            <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}" class="post-date">
+              {{ .Date.Format "January 2, 2006" }}
+            </time>
+            
+            {{ if .ReadingTime }}
+            <span class="post-reading-time">{{ .ReadingTime }} min read</span>
+            {{ end }}
+            
+            {{ if .WordCount }}
+            <span class="post-word-count">{{ .WordCount }} words</span>
+            {{ end }}
+          </div>
+          
+          {{ if .Params.tags }}
+          <div class="post-tags">
+            {{ range first 3 .Params.tags }}
+            <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}" class="post-tag">{{ . }}</a>
+            {{ end }}
+          </div>
+          {{ end }}
+        </div>
+      </article>
+      {{ end }}
+    </div>
+  </section>
+</div>
+{{ end }}
+

@@ -1,0 +1,27 @@
+{{ define "main" }}
+<article class="about-page">
+  <header class="about-header">
+    {{ if site.Params.avatar.url }}
+    <img src="{{ site.Params.avatar.url }}" alt="{{ site.Title }}" class="about-page-avatar">
+    {{ end }}
+    
+    <div class="about-page-info">
+      <h1 class="about-page-name">{{ .Title }}</h1>
+      {{ if site.Params.description }}
+      <p class="about-page-description">{{ site.Params.description }}</p>
+      {{ end }}
+      
+      {{ if site.Params.social }}
+      <div class="about-page-social">
+        {{ partial "social-links.html" . }}
+      </div>
+      {{ end }}
+    </div>
+  </header>
+
+  <div class="about-content-full">
+    {{ .Content }}
+  </div>
+</article>
+{{ end }}
+

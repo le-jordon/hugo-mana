@@ -1,0 +1,29 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} | {{ site.Title }}{{ end }}</title>
+<meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Summary | plainify | truncate 160 }}{{ end }}">
+
+{{ if .Params.tags }}
+<meta name="keywords" content="{{ delimit .Params.tags ", " }}">
+{{ end }}
+
+{{ if .Params.author }}
+<meta name="author" content="{{ .Params.author }}">
+{{ end }}
+
+<link rel="canonical" href="{{ .Permalink }}">
+
+{{ partial "head/css.html" . }}
+
+{{ if site.Params.favicon }}
+<link rel="icon" href="{{ site.Params.favicon | relURL }}">
+{{ end }}
+
+{{ range .AlternativeOutputFormats }}
+<link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink }}">
+{{ end }}
+
+{{ if .OutputFormats.Get "RSS" }}
+<link rel="alternate" type="application/rss+xml" href="{{ (.Site.Home.OutputFormats.Get "RSS").RelPermalink }}" title="{{ site.Title }}">
+{{ end }}
+
