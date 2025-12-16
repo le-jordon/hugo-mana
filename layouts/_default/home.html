@@ -30,12 +30,12 @@
     
     <div class="posts-list">
       {{ range where site.RegularPages "Type" "posts" | first 10 }}
-      <article class="post-card">
+      <article class="post-card" data-post-url="{{ .RelPermalink }}">
         {{ partial "post-image.html" . }}
         
         <div class="post-content">
           <h3 class="post-title">
-            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+            <a href="{{ .RelPermalink }}" onclick="event.stopPropagation();">{{ .Title }}</a>
           </h3>
           
           {{ if .Description }}
@@ -76,7 +76,7 @@
           {{ if .Params.tags }}
           <div class="post-tags">
             {{ range first 3 .Params.tags }}
-            <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}" class="post-tag">{{ . }}</a>
+            <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}" class="post-tag" onclick="event.stopPropagation();">{{ . }}</a>
             {{ end }}
           </div>
           {{ end }}

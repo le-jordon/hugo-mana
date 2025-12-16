@@ -13,7 +13,7 @@
 {{ end }}
 {{ if $image }}
 <div class="post-image">
-  <a href="{{ .RelPermalink }}">
+  <a href="{{ .RelPermalink }}" onclick="event.stopPropagation();">
     <img src="{{ $image | relURL }}" alt="{{ .Title }}" loading="lazy">
   </a>
 </div>

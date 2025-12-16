@@ -228,3 +228,19 @@
   });
 })();
 
+// Make post cards clickable
+(function() {
+  document.querySelectorAll('.post-card[data-post-url]').forEach(card => {
+    card.addEventListener('click', function(e) {
+      // Don't navigate if clicking on a link or tag
+      if (e.target.closest('a')) {
+        return;
+      }
+      const url = this.getAttribute('data-post-url');
+      if (url) {
+        window.location.href = url;
+      }
+    });
+  });
+})();
+

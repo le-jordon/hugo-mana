@@ -9,12 +9,12 @@
 
   <div class="posts-list">
     {{ range .Paginator.Pages }}
-    <article class="post-card">
+    <article class="post-card" data-post-url="{{ .RelPermalink }}">
       {{ partial "post-image.html" . }}
       
       <div class="post-content">
         <h2 class="post-title">
-          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+          <a href="{{ .RelPermalink }}" onclick="event.stopPropagation();">{{ .Title }}</a>
         </h2>
         
         {{ if .Description }}
@@ -55,7 +55,7 @@
         {{ if .Params.tags }}
         <div class="post-tags">
           {{ range .Params.tags }}
-          <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}" class="post-tag">{{ . }}</a>
+          <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}" class="post-tag" onclick="event.stopPropagation();">{{ . }}</a>
           {{ end }}
         </div>
         {{ end }}

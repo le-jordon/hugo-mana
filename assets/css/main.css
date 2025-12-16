@@ -217,6 +217,8 @@ main {
   border-radius: 0.5rem;
   border: 1px solid var(--border-color);
   transition: all var(--transition-base);
+  cursor: pointer;
+  position: relative;
 }
 
 .post-card:hover {
@@ -315,6 +317,9 @@ main {
   text-decoration: none;
   transition: all var(--transition-fast);
   opacity: 0.8;
+  position: relative;
+  z-index: 10;
+  cursor: pointer;
 }
 
 .post-tag:hover {
