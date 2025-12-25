@@ -59,6 +59,7 @@
   const searchModalBackdrop = document.getElementById('search-modal-backdrop');
   const searchModalClose = document.getElementById('search-modal-close');
   const searchInput = document.getElementById('search-input');
+  const searchInputClear = document.getElementById('search-input-clear');
   const searchResults = document.getElementById('search-results');
   
   let searchIndex = [];
@@ -78,12 +79,20 @@
     }
   }
   
+  // Toggle search results visibility
+  function toggleSearchResults() {
+    if (!searchResults) return;
+    const hasContent = searchResults.innerHTML.trim().length > 0;
+    searchResults.style.display = hasContent ? 'block' : 'none';
+  }
+  
   // Perform search
   function performSearch(query) {
     if (!searchResults) return;
     
     if (!query || query.length < 2) {
       searchResults.innerHTML = '';
+      toggleSearchResults();
       return;
     }
     
@@ -105,6 +114,7 @@
     
     if (results.length === 0) {
       searchResults.innerHTML = '<div class="search-result-empty">No results found</div>';
+      toggleSearchResults();
       return;
     }
     
@@ -115,6 +125,8 @@
         ${item.date ? `<div class="search-result-date">${item.date}</div>` : ''}
       </a>
     `).join('');
+    
+    toggleSearchResults();
   }
   
   // Highlight matching text
@@ -124,12 +136,24 @@
     return text.replace(regex, '<mark>$1</mark>');
   }
   
+  // Show/hide clear button based on input value
+  function toggleClearButton() {
+    if (searchInputClear && searchInput) {
+      if (searchInput.value.length > 0) {
+        searchInputClear.classList.add('visible');
+      } else {
+        searchInputClear.classList.remove('visible');
+      }
+    }
+  }
+  
   function openSearchModal() {
     if (searchModal) {
       searchModal.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
       setTimeout(() => {
         searchInput?.focus();
+        toggleClearButton();
       }, 100);
     }
   }
@@ -140,9 +164,11 @@
       document.body.style.overflow = '';
       if (searchInput) {
         searchInput.value = '';
+        toggleClearButton();
       }
       if (searchResults) {
         searchResults.innerHTML = '';
+        searchResults.style.display = 'none';
       }
     }
   }
@@ -151,12 +177,36 @@
   if (searchInput) {
     searchInput.addEventListener('input', (e) => {
       const query = e.target.value;
+      toggleClearButton();
       
       // Debounce search
       clearTimeout(searchTimeout);
       searchTimeout = setTimeout(() => {
         performSearch(query);
       }, 200);
+    });
+    
+    // Initial state
+    toggleClearButton();
+  }
+  
+  // Clear input when trash icon is clicked
+  if (searchInputClear) {
+    searchInputClear.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      if (searchInput) {
+        searchInput.value = '';
+        searchInput.focus();
+        toggleClearButton();
+        // Clear search results
+        if (searchResults) {
+          searchResults.innerHTML = '';
+          searchResults.style.display = 'none';
+        }
+        // Trigger input event to clear any pending search
+        searchInput.dispatchEvent(new Event('input', { bubbles: true }));
+      }
     });
   }
   
