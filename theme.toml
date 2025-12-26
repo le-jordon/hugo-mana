@@ -1,19 +1,15 @@
 name = "Mana"
 license = "MIT"
 licenselink = "https://github.com/Livour/hugo-mana-theme/blob/main/LICENSE"
-description = "A custom Hugo theme inspired by PaperModX and Blowfish, featuring a dark theme by default, clean aesthetics, and modern functionality."
-
-# The home page of the theme, where the source can be found.
+description = "Futuristic theme featuring a dark theme, clean aesthetics, and modern functionality."
 homepage = "https://github.com/Livour/hugo-mana-theme"
-
-# If you have a running demo of the theme.
-# demosite = "https://your-demo-site.com"
+demosite = "https://managuide.blog/"
 
 tags = ["blog", "responsive", "personal", "dark", "minimal", "modern", "code-highlighting"]
 features = ["responsive", "dark mode", "light mode", "blog", "social icons", "code highlighting", "clean design", "sticky header", "search", "table of contents", "syntax highlighting", "post filtering", "tag search", "archive pages"]
 
 [author]
-  name = "Mana"
+  name = "Livour"
   homepage = "https://github.com/Livour"
 
 [module]
