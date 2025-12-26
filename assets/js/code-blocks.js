@@ -57,20 +57,29 @@ function initCollapsibleCodeBlocks() {
         e.stopPropagation();
         const codeText = getCodeText();
         
+        // Check if we're on mobile (narrow screen)
+        const isMobile = window.innerWidth <= 768;
+        
         try {
           await navigator.clipboard.writeText(codeText);
           
           // Show feedback
           const copyText = copyButton.querySelector('.copy-text');
           const copiedText = copyButton.querySelector('.copied-text');
-          copyText.style.display = 'none';
-          copiedText.style.display = 'inline';
+          
+          if (!isMobile) {
+            // On desktop, show text feedback
+            copyText.style.display = 'none';
+            copiedText.style.display = 'inline';
+          }
           copyButton.classList.add('copied');
           
           // Reset after 2 seconds
           setTimeout(() => {
-            copyText.style.display = 'inline';
-            copiedText.style.display = 'none';
+            if (!isMobile) {
+              copyText.style.display = 'inline';
+              copiedText.style.display = 'none';
+            }
             copyButton.classList.remove('copied');
           }, 2000);
         } catch (err) {
@@ -85,12 +94,18 @@ function initCollapsibleCodeBlocks() {
             document.execCommand('copy');
             const copyText = copyButton.querySelector('.copy-text');
             const copiedText = copyButton.querySelector('.copied-text');
-            copyText.style.display = 'none';
-            copiedText.style.display = 'inline';
+            
+            if (!isMobile) {
+              // On desktop, show text feedback
+              copyText.style.display = 'none';
+              copiedText.style.display = 'inline';
+            }
             copyButton.classList.add('copied');
             setTimeout(() => {
-              copyText.style.display = 'inline';
-              copiedText.style.display = 'none';
+              if (!isMobile) {
+                copyText.style.display = 'inline';
+                copiedText.style.display = 'none';
+              }
               copyButton.classList.remove('copied');
             }, 2000);
           } catch (fallbackErr) {

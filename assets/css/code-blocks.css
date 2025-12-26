@@ -8,7 +8,7 @@
 .code-block-copy {
   position: absolute;
   top: 0.5rem;
-  right: calc(0.5rem + 90px);
+  right: calc(0.5rem + 95px + 0.5rem);
   z-index: 10;
   background: rgba(30, 30, 45, 0.9);
   backdrop-filter: blur(8px);
@@ -85,9 +85,13 @@
   cursor: pointer;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.375rem;
   transition: all var(--transition-fast);
   font-family: var(--font-body);
+  width: 95px;
+  white-space: nowrap;
+  box-sizing: border-box;
 }
 
 .code-block-toggle:hover {
