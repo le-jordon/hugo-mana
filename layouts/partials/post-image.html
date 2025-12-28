@@ -13,8 +13,8 @@
 {{ end }}
 {{ if $image }}
 <div class="post-image">
-  <a href="{{ .RelPermalink }}" onclick="event.stopPropagation();">
-    <img src="{{ $image | relURL }}" alt="{{ .Title }}" loading="lazy">
+  <a href="{{ .RelPermalink }}" onclick="event.stopPropagation();" aria-label="Read {{ .Title }}">
+    <img src="{{ $image | relURL }}" alt="{{ if .Description }}{{ .Description }}{{ else }}{{ .Title }} - Featured image{{ end }}" loading="lazy" width="1200" height="630">
   </a>
 </div>
 {{ end }}

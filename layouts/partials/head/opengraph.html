@@ -39,6 +39,8 @@
 <meta property="article:author" content="{{ .Params.author }}">
 {{- end -}}
 {{- if .Params.tags -}}
+{{- $firstTag := index .Params.tags 0 -}}
+<meta property="article:section" content="{{ $firstTag }}">
 {{- range .Params.tags -}}
 <meta property="article:tag" content="{{ . }}">
 {{- end -}}
