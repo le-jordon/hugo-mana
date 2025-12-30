@@ -1,0 +1,108 @@
+baseURL = 'https://example.com/'
+languageCode = 'en-US'
+title = "Your Site Title"
+theme = "mana"
+
+# Theme configuration
+[params]
+  description = "Your site description"
+  author = "Your Name"
+  favicon = "/favicon/logo-transparent/favicon.ico"
+  heroTitleLine1 = "YOUR SITE NAME"
+  heroTitleLine2 = "YOUR TAGLINE"
+  
+  # 404 Page Configuration
+  # Custom message for the 404 error page (supports HTML)
+  # If not set, defaults to: "Sorry, the page you are looking for could not be found."
+  # custom404Message = "Sorry, the page you are looking for could not be found. I guess I don't have a guide for <em>everything</em>"
+  
+  # Social media links
+  [params.social]
+    github = "https://github.com/yourusername"
+    linkedin = "https://www.linkedin.com/in/yourprofile"
+    email = "your.email@example.com"
+  
+  # Avatar
+  [params.avatar]
+    url = "https://example.com/avatar.jpg"
+  
+  # Buy Me a Coffee Widget
+  # Set enabled = true and provide your widget ID to use the floating widget
+  # Leave enabled = false or unset to use a simple link instead
+  [params.buyMeACoffee]
+    enabled = true
+    id = "yourwidgetid"
+    description = "Support me on Buy me a coffee!"
+    message = ""
+    color = "#BD5FFF"
+    position = "Right"
+    x_margin = "18"
+    y_margin = "18"
+  
+  # Alternative: Simple Buy Me a Coffee link (if widget is disabled)
+  # buyMeACoffee = "https://buymeacoffee.com/yourusername"
+  
+  # Footer text (optional)
+  footerText = "Built with Hugo and Mana theme"
+  
+  # Code syntax highlighting themes
+  # Options: Any valid Chroma style name (e.g., "catppuccin-macchiato", "catppuccin-frappe", "github", "monokai", etc.)
+  [params.codeHighlight]
+    darkTheme = "catppuccin-macchiato"   # Theme for dark mode
+    lightTheme = "catppuccin-frappe"     # Theme for light mode
+
+  # Umami Analytics (optional)
+  # Set your Umami website ID for page tracking
+  # [params.umami]
+  #   websiteId = "your-umami-website-id"
+
+# Main menu
+[[menus.main]]
+name = 'Home'
+pageRef = '/'
+weight = 10
+
+[[menus.main]]
+name = 'Posts'
+pageRef = '/posts'
+weight = 20
+
+[[menus.main]]
+name = 'Tags'
+pageRef = '/tags'
+weight = 30
+
+[[menus.main]]
+name = 'About'
+url = '/about/'
+weight = 40
+
+# Table of Contents (recommended)
+[markup]
+  [markup.tableOfContents]
+    startLevel = 1
+    endLevel = 6
+    ordered = false
+
+# Allow raw HTML within Markdown (for KaTeX, etc.)
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+# Syntax highlighting configuration
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = true
+    noClasses = false
+    style = "catppuccin-macchiato"  # Default style (will be overridden by theme-aware CSS)
+
+# Output formats for search index
+[outputs]
+  home = ["HTML", "JSON"]
+
+# Sitemap configuration for SEO
+[sitemap]
+  changefreq = "weekly"
+  priority = 0.5
+  filename = "sitemap.xml"
+
