@@ -4,60 +4,16 @@ A custom Hugo theme inspired by PaperModX and Blowfish, featuring a dark theme b
 
 ## Features
 
-### Theme & Design
-- **Dark theme by default** with light theme toggle
-- **System preference detection** with manual override
-- **Theme persistence** via localStorage
-- **Glassy design** effects throughout
-- **Clean, minimal aesthetic** with modern UI patterns
-- **Fully responsive** layout (mobile-first approach)
-- **Smooth animations** and transitions
-- **Custom Google Fonts** integration (Space Grotesk, Inter, Outfit, JetBrains Mono)
-
-### Navigation & Layout
-- **Sticky header** navigation that stays visible while scrolling
-- **Mobile hamburger menu** (glass dock navigation)
-- **Smooth scroll** to anchor links
-- **Scroll-to-top button** with visibility detection
-
-### Content Features
-- **Table of Contents** (TOC) with auto-expand on desktop, collapsible on mobile
-- **Active TOC highlighting** that tracks scroll position
-- **Post filtering system** by year/month and tags
-- **Tag search** with autocomplete and keyboard navigation
-- **Tag cloud** visualization
+- **Fully responsive** design with mobile-first approach
+- **Full-text search** with JSON index and keyboard navigation
+- **Syntax highlighting** with theme-aware Chroma (Catppuccin themes)
+- **Table of Contents** with active section highlighting
+- **Dark/Light theme** with system preference detection and manual toggle
+- **Post filtering** by tags, year, and month
 - **Archive pages** with chronological organization
-- **Post navigation** (previous/next post links)
-- **Post metadata** display (date, tags, reading time)
-- **Post images/thumbnails** support
-
-### Code Features
-- **Syntax highlighting** with Chroma (Catppuccin themes by default)
-- **Theme-aware syntax highlighting** (automatically switches with theme toggle)
-- **Code block copy button** with visual feedback (checkmark icon)
-- **Collapsible code blocks** with expand/collapse functionality
-- **Responsive code blocks** (copy button adapts to screen size)
-
-### Search & Discovery
-- **Full-text search modal** with JSON index
-- **Search result highlighting** of matching terms
-- **Keyboard shortcuts** (Escape to close, Enter to search)
-- **Clickaway to close** search modal
-
-### Performance & Optimization
-- **Content hashing** (fingerprinting) for cache busting
-- **Asset minification** and bundling
-- **Optimized resource loading** with defer attributes
-- **RSS feed** support
-
-### Integration & Widgets
-- **Buy Me a Coffee** floating widget (configurable)
-- **Social links** integration (GitHub, LinkedIn, Email)
-- **Avatar support** for home and about pages
-- **SEO meta tags** (description, keywords, author, canonical)
-- **Favicon support** with multiple sizes and formats
-- **Umami Analytics** integration (optional)
-- **Custom 404 page** with configurable message
+- **SEO optimized** with Open Graph, Twitter Cards, and structured data
+- **Performance optimized** with asset minification and caching
+- **Integrations**: Buy Me a Coffee, Umami Analytics, social links
 
 ## Installation
 
