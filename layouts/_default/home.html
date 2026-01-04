@@ -26,14 +26,19 @@
         {{ end }}
         </div>
         <div class="hero-image">
-        {{ if site.Params.avatar.url }}
-          <img src="{{ site.Params.avatar.url }}" alt="{{ site.Title }}" class="hero-logo">
-        {{ else }}
-          {{ with resources.Get site.Params.avatar.assetPath }}
-            {{ with .Resize "600x jpg" }}
+        {{ $avatarUrl := site.Params.avatar.home.url | default site.Params.avatar.url }}
+        {{ $avatarAsset := site.Params.avatar.home.assetPath | default site.Params.avatar.assetPath }}
+        
+        {{ if $avatarUrl }}
+          <img src="{{ $avatarUrl }}" alt="{{ site.Title }}" class="hero-logo">
+        {{ else if $avatarAsset }}
+          {{ with resources.Get $avatarAsset }}
+            {{ with .Resize "600x" }}
               <img src="{{ .RelPermalink }}" alt="{{ site.Title }}" class="hero-logo">
             {{ end }}
           {{ end }}
+        {{ else }}
+          <img src="/favicon/logo-transparent/android-chrome-512x512.png" alt="{{ site.Title }}" class="hero-logo">
         {{ end }}
         </div>
       </div>
