@@ -28,12 +28,17 @@
         <div class="hero-image">
         {{ $avatarUrl := site.Params.avatar.home.url | default site.Params.avatar.url }}
         {{ $avatarAsset := site.Params.avatar.home.assetPath | default site.Params.avatar.assetPath }}
+        {{ $enableResize := site.Params.avatar.home.enableResize | default site.Params.avatar.enableResize | default true }}
         
         {{ if $avatarUrl }}
           <img src="{{ $avatarUrl }}" alt="{{ site.Title }}" class="hero-logo">
         {{ else if $avatarAsset }}
           {{ with resources.Get $avatarAsset }}
-            {{ with .Resize "600x" }}
+            {{ if $enableResize }}
+              {{ with .Resize "512x" }}
+                <img src="{{ .RelPermalink }}" alt="{{ site.Title }}" class="hero-logo">
+              {{ end }}
+            {{ else }}
               <img src="{{ .RelPermalink }}" alt="{{ site.Title }}" class="hero-logo">
             {{ end }}
           {{ end }}

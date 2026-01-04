@@ -8,12 +8,17 @@
       
       {{ $avatarUrl := site.Params.avatar.about.url | default site.Params.avatar.url }}
       {{ $avatarAsset := site.Params.avatar.about.assetPath | default site.Params.avatar.assetPath }}
+      {{ $enableResize := site.Params.avatar.about.enableResize | default site.Params.avatar.enableResize | default true }}
       
       {{ if $avatarUrl }}
         <img src="{{ $avatarUrl }}" alt="{{ site.Title }}" class="about-page-avatar">
       {{ else if $avatarAsset }}
         {{ with resources.Get $avatarAsset }}
-          {{ with .Resize "120x" }}
+          {{ if $enableResize }}
+            {{ with .Resize "120x" }}
+              <img src="{{ .RelPermalink }}" alt="{{ site.Title }}" class="about-page-avatar">
+            {{ end }}
+          {{ else }}
             <img src="{{ .RelPermalink }}" alt="{{ site.Title }}" class="about-page-avatar">
           {{ end }}
         {{ end }}
