@@ -26,7 +26,15 @@
         {{ end }}
         </div>
         <div class="hero-image">
-          <img src="/favicon/logo-transparent/android-chrome-512x512.png" alt="{{ site.Title }}" class="hero-logo">
+        {{ if site.Params.avatar.url }}
+          <img src="{{ site.Params.avatar.url }}" alt="{{ site.Title }}" class="hero-logo">
+        {{ else }}
+          {{ with resources.Get site.Params.avatar.assetPath }}
+            {{ with .Resize "600x jpg" }}
+              <img src="{{ .RelPermalink }}" alt="{{ site.Title }}" class="hero-logo">
+            {{ end }}
+          {{ end }}
+        {{ end }}
         </div>
       </div>
     </div>

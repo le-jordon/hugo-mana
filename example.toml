@@ -24,7 +24,12 @@ theme = "mana"
   
   # Avatar
   [params.avatar]
+    # If you have a hosted image you want to use as-is. The template will attempt to use this if set.
     url = "https://example.com/avatar.jpg"
+    # If you have an image you want to provide as an asset and run through Hugo's pipes to resize based on use.
+    # This will only be used if "url" is *not* set.
+    # This path is relative to the "assets" folder.
+    assetPath = "images/avatar.png"
   
   # Buy Me a Coffee Widget
   # Set enabled = true and provide your widget ID to use the floating widget
