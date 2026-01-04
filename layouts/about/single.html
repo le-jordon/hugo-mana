@@ -8,7 +8,7 @@
       
       {{ $avatarUrl := site.Params.avatar.about.url | default site.Params.avatar.url }}
       {{ $avatarAsset := site.Params.avatar.about.assetPath | default site.Params.avatar.assetPath }}
-      {{ $enableResize := site.Params.avatar.about.enableResize | default site.Params.avatar.enableResize | default true }}
+      {{ $enableResize := site.Params.avatar.about.enableResize | default site.Params.avatar.enableResize | default false }}
       
       {{ if $avatarUrl }}
         <img src="{{ $avatarUrl }}" alt="{{ site.Title }}" class="about-page-avatar">
