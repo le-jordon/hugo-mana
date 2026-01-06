@@ -118,6 +118,12 @@ weight = 40
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
+    [markup.goldmark.parser]
+      # Enable block-level attributes for blockquotes and other block elements
+      # Required for blockquote render hooks (alerts/admonitions)
+      [markup.goldmark.parser.attribute]
+        block = true
+        title = true
 
 # Syntax highlighting configuration
   [markup.highlight]
