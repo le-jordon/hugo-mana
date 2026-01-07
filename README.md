@@ -109,6 +109,25 @@ Configure your site navigation menu:
   weight = 40
 ```
 
+### Pagination
+
+The theme includes pagination for the posts listing page (Sorted by date).
+Configure the number of posts per page:
+
+```toml
+[pagination]
+  pageSize = 10  # Number of posts per page (default: 10)
+```
+
+The pagination controls include:
+- **First/Last page links** - Jump to the beginning or end
+- **Previous/Next links** - Navigate sequentially
+- **Page numbers** - Direct navigation to specific pages
+- **Current page indicator** - Shows which page you're on
+- **Page information** - Displays total posts and pages
+
+Pagination automatically appears when you have more posts than the configured `pageSize`. The controls are designed
+
 ### Table of Contents
 
 Enable table of contents for posts:
