@@ -16,10 +16,16 @@ html {
 :root {
   /* Nebula Glass Color Palette */
   --bg-deep: #020617; /* Deep Midnight Blue */
-  --accent-primary: #b063e0; /* Primary Purple */
-  --accent-mid-purple: #c485f6; /* Mid Purple */
-  --accent-light-purple: #dbabff; /* Light Purple */
-  --accent-secondary: #00ffff; /* Cyber Cyan */
+  --accent-primary: #00d4ff; 
+    
+    /* Mid-range Steel Blue - For secondary elements */
+    --accent-mid-purple: #5b8fb9; 
+    
+    /* Soft Sky Blue - For highlights or subtle borders */
+    --accent-light-purple: #b6eada; 
+    
+    /* Bright Cyan - Often matches primary for consistency */
+    --accent-secondary: #00ffff; /* Cyber Cyan */
   --glass-surface: rgba(255, 255, 255, 0.05);
   --glass-border: rgba(255, 255, 255, 0.1);
   --glass-block: rgb(255, 255, 255);
@@ -31,7 +37,7 @@ html {
   --text-primary: #f1f5f9;
   --text-secondary: #cbd5e1;
   --text-muted: #94a3b8;
-  --accent-hover: #c485f6;
+  --accent-hover: #00ffff;
   --border-color: var(--glass-border);
   /* Dark theme rgba values for effects */
   --accent-primary-rgba-03: rgba(176, 99, 224, 0.3);
@@ -43,7 +49,7 @@ html {
   --accent-mid-purple-rgba-02: rgba(196, 133, 246, 0.2);
   /* Tag styling for dark theme */
   --tag-bg: rgba(0, 0, 0, 0.4);
-  --tag-color: var(--accent-light-purple);
+  --tag-color: var(--accent-secondary);
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
